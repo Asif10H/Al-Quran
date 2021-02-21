@@ -14,11 +14,17 @@
         text-align: center;
         box-shadow: 5px 5px 10px gray;
       }
+      .surah-name {
+        color: #f50057;
+      }
+      .surah-number {
+        color: #263238;
+      }
     </style>
   </head>
   <body>
     <h1 class="user">Al Quran</h1>
-    <div id="user-container"></div>
+    <div id="surah-info"></div>
     <script>
       fetch("http://api.alquran.cloud/v1/surah")
         .then((res) => res.json())
@@ -27,21 +33,21 @@
 
       function showUserName(data) {
         //console.log(data);
-        let userHtml = "";
+        let surahInfo = "";
         data.forEach((user) => {
-          userHtml =
-            userHtml +
+          surahInfo =
+            surahInfo +
             `<div class = "user">
-                <h2>${user.number} </h2>
-                <h2>Name: ${user.englishName} </h2>
-                <h2>English Name: ${user.englishNameTranslation} </h2>
-                <h2>Number Of Ayahs: ${user.numberOfAyahs} </h2>
-                <h2>Revelation Type: ${user.revelationType} </h2>
+                <h1 class="surah-number">${user.number} </h1>
+                <h1 class = "surah-name">Name: ${user.englishName} </h1>
+                <h1>English Name: ${user.englishNameTranslation} </h1>
+                <h1>Number Of Ayahs: ${user.numberOfAyahs} </h1>
+                <h1>Revelation Type: ${user.revelationType} </h1>
             </div>`;
         });
-        //console.log(userHtml);
-        const userContainer = document.getElementById("user-container");
-        userContainer.innerHTML = userHtml;
+        //console.log( surahInfo);
+        const surahContainer = document.getElementById("surah-info");
+        surahContainer.innerHTML = surahInfo;
       }
     </script>
   </body>
