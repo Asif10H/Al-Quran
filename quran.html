@@ -29,9 +29,9 @@
       fetch("https://api.alquran.cloud/v1/surah")
         .then((res) => res.json())
         //.then((data) => console.log(data));
-        .then((data) => showUserName(data.data));
+        .then((data) => showSurahInfo(data.data));
 
-      function showUserName(data) {
+      function showSurahInfo(data) {
         //console.log(data);
         let surahInfo = "";
         data.forEach((surah) => {
