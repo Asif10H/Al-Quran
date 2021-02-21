@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .user {
+        background-color: lightsalmon;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 5px 5px 10px gray;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="user">Al Quran</h1>
+    <div id="user-container"></div>
+    <script>
+      fetch("http://api.alquran.cloud/v1/surah")
+        .then((res) => res.json())
+        //.then((data) => console.log(data));
+        .then((data) => showUserName(data.data));
+
+      function showUserName(data) {
+        //console.log(data);
+        let userHtml = "";
+        data.forEach((user) => {
+          userHtml =
+            userHtml +
+            `<div class = "user">
+                <h2>${user.number} </h2>
+                <h2>Name: ${user.englishName} </h2>
+                <h2>English Name: ${user.englishNameTranslation} </h2>
+                <h2>Number Of Ayahs: ${user.numberOfAyahs} </h2>
+                <h2>Revelation Type: ${user.revelationType} </h2>
+            </div>`;
+        });
+        //console.log(userHtml);
+        const userContainer = document.getElementById("user-container");
+        userContainer.innerHTML = userHtml;
+      }
+    </script>
+  </body>
+</html>
