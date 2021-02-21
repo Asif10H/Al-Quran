@@ -26,7 +26,7 @@
     <h1 class="user">Al Quran</h1>
     <div id="surah-info"></div>
     <script>
-      fetch("http://api.alquran.cloud/v1/surah")
+      fetch("https://api.alquran.cloud/v1/surah")
         .then((res) => res.json())
         //.then((data) => console.log(data));
         .then((data) => showUserName(data.data));
@@ -34,15 +34,15 @@
       function showUserName(data) {
         //console.log(data);
         let surahInfo = "";
-        data.forEach((user) => {
+        data.forEach((surah) => {
           surahInfo =
             surahInfo +
             `<div class = "user">
-                <h1 class="surah-number">${user.number} </h1>
-                <h1 class = "surah-name">Name: ${user.englishName} </h1>
-                <h1>English Name: ${user.englishNameTranslation} </h1>
-                <h1>Number Of Ayahs: ${user.numberOfAyahs} </h1>
-                <h1>Revelation Type: ${user.revelationType} </h1>
+                <h1 class="surah-number">${surah.number} </h1>
+                <h1 class = "surah-name">Name: ${surah.englishName} </h1>
+                <h1>English Name: ${surah.englishNameTranslation} </h1>
+                <h1>Number Of Ayahs: ${surah.numberOfAyahs} </h1>
+                <h1>Revelation Type: ${surah.revelationType} </h1>
             </div>`;
         });
         //console.log( surahInfo);
